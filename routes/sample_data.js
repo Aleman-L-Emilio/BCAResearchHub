@@ -6,7 +6,7 @@ var database = require('../database');
 
 router.get("/", function(request, response, next){
 
-	var query = "SELECT * FROM sample_data ORDER BY id DESC";
+	var query = "SELECT * FROM project ORDER BY title";
 
 	database.query(query, function(error, data){
 
@@ -14,7 +14,7 @@ router.get("/", function(request, response, next){
 			throw error; 
 		}
 		else {
-			response.render('sample_data', {title:'Node.js MySQL CRUD Application', action:'list', sampleData:data});
+			response.render('sample_data', {title:'BCA Research Hub', action:'list', sampleData:data});
 		}
 
 	});

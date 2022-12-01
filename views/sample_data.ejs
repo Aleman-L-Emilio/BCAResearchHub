@@ -28,11 +28,11 @@
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Age</th>
-                                <th>Gender</th>
-                                <th>Action</th>
+                                <th>Title</th>
+                                <th>Researchers</th>
+                                <th>Materials</th>
+                                <th>Abstract</th>
+                                <th>Tags</th>
                             </tr>
                             <%
                             if(sampleData.length > 0)
@@ -40,11 +40,11 @@
                                 sampleData.forEach(function(data){
                             %>
                             <tr>
-                                <td><%= data.first_name %></td>
-                                <td><%= data.last_name %></td>
-                                <td><%= data.age %></td>
-                                <td><%= data.gender %></td>
-                                <td></td>
+                                <td><%= data.title %></td>
+                                <td><%= data.researchers %></td>
+                                <td><%= data.materials %></td>
+                                <td><%= data.abstract %></td>
+                                <td><%= data.tags %></td>
                             </tr>
                             <%
                                 });
