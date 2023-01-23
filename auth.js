@@ -11,12 +11,14 @@ router.get(
         scope: "openid email profile"
     }),
     (req, res) => {
-        res.redirect("/");
+      console.log("ahaisdhoiahsduahsuidgayigriuaehoirnaeoi");
+      res.redirect("/");
     }
 );
 
 router.get("/callback", (req, res, next) => {
     passport.authenticate("auth0", (err, user, info) => {
+      console.log("");
       if (err) {
         return next(err);
       }
@@ -27,6 +29,7 @@ router.get("/callback", (req, res, next) => {
         if (err) {
           return next(err);
         }
+        console.log("haoisdoiasdios");
         const returnTo = req.session.returnTo;
         delete req.session.returnTo;
         res.redirect(returnTo || "/");
