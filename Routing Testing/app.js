@@ -20,6 +20,10 @@ app.get('/landing', (req, res) => {
   res.sendFile(path.join(__dirname, '/landing.html'));
 });
 
+app.get('/upload', (req, res) => {
+  res.sendFile(path.join(__dirname, '/rapid_prototype/projectupload.html'));
+});
+
 app.listen(3000, () => {
   console.log('Listening on port 3000');
 });

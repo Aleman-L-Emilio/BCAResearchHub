@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
     </head>
     <body>
         <h1>Upload New Project</h1>
@@ -75,30 +77,43 @@
                 </div>
             </form>
             <script>
-                const form  = document.getElementById('signup');
-                form.addEventListener('submit', (event) => {
-                    const mysql = require('mysql');
-                    // Create a connection to the database
-                    const connection = mysql.createConnection({
-                        host: RDS_HOSTNAME,
-                        user: RDS_USERNAME,
-                        password: RDS_PASSWORD,
-                        database: RDS_PORT
-                    });
-                    // Connect to the database
-                    connection.connect();
-                    // The data to be inserted
-                    let data = { name: 'John', tags: '' };
-                    // Form the SQL query
-                    let sql = 'INSERT INTO users SET ?';
-                    // Insert the data
-                    connection.query(sql, data, (error, results) => {
-                    if (error) throw error;
-                        console.log(results);
-                    });
-                    // Close the connection
-                    connection.end();
-                });
+                $.ajax({
+                type: "POST",
+                url: "./insert.php",
+                data: { project_id: 2, student_id: 1, title: 'SAMPLE_TITLE', abstract: 'SAMPLE_ABSTRACT', tags: 'SAMPLE_TAGS', research_paper: 'SAMPLE_PAPER', teacher_id: 1, teacher_email: 'matwan23@bergen.org'},
+                success: function(data) {
+                    console.log("Row inserted successfully");
+                }
+            });
+                // const form  = document.getElementById('signup');
+                // form.addEventListener('submit', (event) => {
+
+                //     const mysql = require('mysql');
+                //     // Create a connection to the database
+                //     alert("HI!");
+
+                //     const connection = mysql.createConnection({
+                //         host: RDS_HOSTNAME,
+                //         user: RDS_USERNAME,
+                //         password: RDS_PASSWORD,
+                //         database: RDS_PORT
+                //     });
+                //     // Connect to the database
+
+                //     connection.connect();
+                //     // The data to be inserted
+                //     let data = { project_id: 2, student_id: 1, title: 'SAMPLE_TITLE', abstract: 'SAMPLE_ABSTRACT', tags: 'SAMPLE_TAGS', research_paper: 'SAMPLE_PAPER', teacher_id: 1, teacher_email: 'matwan23@bergen.org'};
+                //     // Form the SQL query
+                //     let sql = 'INSERT INTO projects SET ? ';
+                //     // Insert the data
+                //     connection.query(sql, data, (error, results) => {
+                //     if (error) throw error;
+                //         console.log(results);
+                //     });
+                //     // Close the connection
+                //     connection.end();
+                //     alert("HI!");
+                // });
             </script>
 
         </div>
